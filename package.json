@@ -1,0 +1,9 @@
+{
+  "name": "restaurante-souza",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page do Restaurante Souza em Rolim de Moura, RO",
+  "type": "module",
+  "scripts": { "start": "node server.mjs", "check": "node --check dist/script.js && node --check server.mjs" },
+  "engines": { "node": ">=18" }
+}
