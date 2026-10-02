@@ -4,7 +4,7 @@ Landing page em português, responsiva e sem dependências de produção. HTML s
 
 ## Rodar
 
-Abra `dist/index.html` no navegador. Para servir por HTTP, com Node.js 18 ou superior:
+Abra `index.html` no navegador. Para servir por HTTP, com Node.js 18 ou superior:
 
 ```sh
 npm start
@@ -14,14 +14,16 @@ Abra http://127.0.0.1:4173. Não é necessário instalar pacotes.
 
 ## Publicação
 
-Publique o conteúdo de `dist/` em qualquer hospedagem estática. Todos os caminhos são relativos, compatíveis com subdiretórios. Não há etapa de build nem coleta de dados: pedidos abrem o WhatsApp para o cliente revisar e enviar a mensagem.
+Site: https://otaaviohenrique.github.io/restaurante-souza/
+
+No GitHub Pages, use Settings → Pages → Deploy from a branch → main → /(root). O arquivo `.nojekyll` desativa o processamento Jekyll. Em outras hospedagens estáticas, publique `index.html`, `styles.css`, `script.js` e `assets/`. Todos os caminhos são relativos, compatíveis com subdiretórios. Não há etapa de build nem coleta de dados: pedidos abrem o WhatsApp para o cliente revisar e enviar a mensagem.
 
 ## Organização
 
-- `dist/index.html`: textos, preços, contatos, ícones SVG e estrutura semântica.
-- `dist/styles.css`: tokens de identidade, componentes e breakpoints.
-- `dist/script.js`: menu móvel acessível e ano do rodapé.
-- `dist/assets/churrasco.jpg`: fotografia ilustrativa local.
+- `index.html`: textos, preços, contatos, ícones SVG e estrutura semântica.
+- `styles.css`: tokens de identidade, componentes e breakpoints.
+- `script.js`: menu móvel acessível, ano do rodapé e scroll reveal.
+- `assets/churrasco.jpg`: fotografia ilustrativa local.
 - `server.mjs`: servidor local de desenvolvimento.
 
 ## Dados para completar antes da divulgação

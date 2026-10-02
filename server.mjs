@@ -3,8 +3,9 @@ import { readFile } from 'node:fs/promises';
 import { dirname, extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), 'dist');
+const root = dirname(fileURLToPath(import.meta.url));
 const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml' };
+const publicFiles = new Set(['/index.html', '/styles.css', '/script.js', '/assets/churrasco.jpg']);
 const port = Number(process.env.PORT || 4173);
 
 createServer(async (request, response) => {
@@ -15,7 +16,11 @@ createServer(async (request, response) => {
       return;
     }
     const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
-    const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+    const publicPath = pathname === '/' ? '/index.html' : pathname;
+    if (!publicFiles.has(publicPath)) {
+      response.writeHead(404); response.end('Página não encontrada'); return;
+    }
+    const file = resolve(root, '.' + publicPath);
     if (!file.startsWith(root + sep)) {
       response.writeHead(403); response.end('Forbidden'); return;
     }
